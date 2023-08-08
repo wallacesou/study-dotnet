@@ -262,7 +262,7 @@ else
     Console.WriteLine("a não possui um valor (null)");
 ```
 
-Nomenclaturas: convenções
+## Nomenclaturas: convenções
 
 Um **identificador** é o nome que você atribui a um tipo (classe, interface, *struct*, *record*, *delegate* ou *enum*), membro, propriedade, variável ou *namespace*.
 
@@ -290,4 +290,159 @@ double _saldo; // usado para campos internos privados e somente leitura
 float valorTotal; // Camel Case, usados em nomes de variáveis, parâmetros e campos internos privados
 string NomeCompleto; // Pascal Case, usado em nome de classes, métodos, interfaces e propriedades
 const double PI = 3.1415; // Constantes
+```
+
+## Formatação de Saída de Dados
+
+```csharp
+string nome = "Mark";
+int idade = 25;
+
+// concatenação de strings
+Console.WriteLine(nome + " tem " + idade + " anos");
+
+// interpolação de strings
+Console.WriteLine($"{nome} tem {idade} anos");
+
+// place holders (legacy)
+Console.WriteLine("{0} tem {1} anos", nome, idade);
+
+// SEQUÊNCIA DE ESCAPES
+string texto = "Ele disse: \"O que você fez?\"";
+Console.WriteLine(texto);
+```
+
+### Sequencias de Escape
+
+Usados para usar certos caracteres especiais em strings.
+
+| Escape | Representação                          |
+| ------ | -------------------------------------- |
+| `\a`   | Sinal sonoro (alerta)                  |
+| `\b`   | Backspace                              |
+| `\f`   | Alimentação de formulário              |
+| `\n`   | Nova linha                             |
+| `\r`   | Carriagem return                       |
+| `\t`   | Tabulação horizontal                   |
+| `\v`   | Tabulação vertical                     |
+| `\'`   | Aspas simples                          |
+| `\"`   | Aspas duplas                           |
+| `\\`   | Barra invertida                        |
+| `\?`   | Interrogação                           |
+| `\u`   | Caractere ASCII na notação Unicode     |
+| `\x`   | Caractere ASCII na notação hexadecimal |
+
+## Conversão de Tipos
+
+- A linguagem C# é **estaticamente tipada** em tempo de compilação
+
+- Após uma variável ser declarada ela *não pode ser declarada novamente*
+
+- Nem pode ser usada para armazenar valores de outro tipo de dados, a menos que este tipo deda seja convertível para o tipo de dado da variável
+
+### Conversão Implícita
+
+O compilador C# converte automaticamente um tipo de dado em outro tipo (*quando a conversão dos tipos for compatível*).
+
+```csharp
+int a = 100; // int usa 4 bits
+double b = a; // double usa 8 bits
+```
+
+### Conversão Explícita
+
+A conversão tem que ser feita manualmente de forma explícita.
+
+```csharp
+double b = 12.2938;
+int a = (int) b;
+```
+
+O resultado de uma operação pode ou não ser um inteiro.
+
+```csharp
+int num1 = 10;
+int num2 = 4;
+
+float result = num1 / num2; // 2
+
+float result = (float) num1 / num2; // 2.5
+```
+
+### Método .ToString()
+
+O método `.ToString()` da classe **Object** retorna uma string que representa o objeto atual. Converte um objeto em sua *representação de cadeia de caracteres para exibição*.
+
+> Como **Object** é pai de todos os objetos na linguagem C# todos os objetos herdam o método `.ToString()` da classe **Obejct**.
+
+```csharp
+double b = 12.2938;
+string c = b.ToString();
+Console.WriteLine(c);
+```
+
+### Classe Convert()
+
+Fornece diversos métodos para converter um tipo de dado em outro tipo de dado.
+
+Essa classe pertence ao *namespace* System.
+
+| Método        | Descreição                                  |
+| ------------- | ------------------------------------------- |
+| `ToBoolean()` | converte um tipo para um valor Boolean      |
+| `ToChar()`    | converte um tipo para o tipo char           |
+| `ToDouble()`  | converte um tipo para o tipo double         |
+| `ToInt16()`   | converte um tipo para o tipo 16-bit (short) |
+| `ToInt32()`   | converte um tipo para o tipo 32-bit (short) |
+| `ToString()`  | converte um tipo para uma string            |
+
+```csharp
+int a = 100;
+double b = 12.2938;
+string c = b.ToString();
+
+Console.WriteLine(Convert.ToInt32(b));
+Console.WriteLine(Convert.ToDecimal(c));
+Console.WriteLine(Convert.ToBoolean(a)); // se for diferente de 0 sempre vai ser true
+```
+
+#### Mas e se não couber?
+
+As conversões de *ampliação* ou *estreitamento* entre dois tipos de dados que não resultarem em *perda de dados*, terão êxito e o método retornará um valor do tipo de destino.
+
+Quando uma conversão de *estreitamento de dados* resultar em perda de dados, vai ocorrer uma **OverflowException** em tempo de execução.
+
+```csharp
+int a = 1000;
+Console.WriteLine(Convert.ToByte(a)); // não cabe (byte: 0 a 255)
+```
+
+## Entrada de dados
+
+`ReadLine()`: lê uma única linha de entrada do fluxo de entrada padrão. Retorna a mesma *string*.
+
+```csharp
+Console.Write("Informe seu nome: ");
+string nome = Console.ReadLine();
+
+Console.Write("Digite sua idade: ");
+int idade = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Seu nome é {nome} e você tem {idade} anos.");
+```
+
+`Read()`: lê apenas um único caractere do fluxo de entrada padrão. Retornar o *valor ASCII* do caractere.
+
+```csharp
+Console.WriteLine("Digite algo:");
+var ascii = Console.Read();
+Console.WriteLine($"O valor ASCII do primeiro caractere é {ascii}");
+```
+
+`ReadKey()`: lê apenas um único caractere do fluxo de entrada padrão. Obtém a próxima tecla pressionada pelo usuário. Retorna um tipo **ConsoleKeyInfo**.
+
+É usado também para segurar a tela até que o usuário pressione uma tecla.
+
+```csharp
+Console.ReadKey();
 ```
