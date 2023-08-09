@@ -545,3 +545,42 @@ var y; // error: implicity-typed
 - Usada em laços `for` e `foreach`
 
 - Usada em instruções `using`
+
+## Operadores de Incremento e Decremento
+
+Objetivo: Aumentar ou diminuir exatamente em uma unidade o valor de uma variável.
+
+| Operador | Exemplo          | Significado                               |
+| -------- | ---------------- | ----------------------------------------- |
+| ++       | `x++;` ou `++x;` | Incrementa x de uma unidade (`x = x + 1`) |
+| --       | `x--;` ou `--x;` | Decrementa x de uma unidade (`x = x - 1`) |
+
+### Diferença entre pré e pós incremento/decremento
+
+```csharp
+int a, resultado;
+
+a = 0;
+resultado = a++ + 10; // 10 -> primeiro calcula e depois incrementa
+Console.WriteLine(resultado);
+
+a = 0;
+resultado = ++a + 10; // 11 -> primeiro incrementa e depois calcula
+Console.WriteLine(resultado);
+```
+
+## Constantes
+
+Constantes são valores imutáveis que são conhecidos em *tempo de compilação* e não mudam durante a vida útil do programa.
+
+As constantes são declaradas usando o modificador **const** e devem ser inicializadas na sua declaração.
+
+```csharp
+const int ANO = 12; // opção 1
+const int MES = 30, SEMANA = 7, QUIZENA = 15; // opção 2
+
+const int MESES_ANO = 12;
+const int DIAS_ANO = 365;
+
+const float DIAS_POR_MES = (float)DIAS_ANO / (float)MESES_ANO;
+```
