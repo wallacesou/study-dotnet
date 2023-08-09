@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaidaDados", "SaidaDados\Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tipos-Conversion", "Tipos-Conversion\Tipos-Conversion.csproj", "{439C3AB7-404C-42E0-A188-065B935B9448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntradaDados", "EntradaDados\EntradaDados.csproj", "{5111B413-25F4-4CF7-8739-8B9FDA04FB91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntradaDados", "EntradaDados\EntradaDados.csproj", "{5111B413-25F4-4CF7-8739-8B9FDA04FB91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operadores-Aritmeticos", "Operadores-Aritmeticos\Operadores-Aritmeticos.csproj", "{AA54A224-1667-4D41-8D9B-E34185311F5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{5111B413-25F4-4CF7-8739-8B9FDA04FB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5111B413-25F4-4CF7-8739-8B9FDA04FB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5111B413-25F4-4CF7-8739-8B9FDA04FB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA54A224-1667-4D41-8D9B-E34185311F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA54A224-1667-4D41-8D9B-E34185311F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA54A224-1667-4D41-8D9B-E34185311F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA54A224-1667-4D41-8D9B-E34185311F5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

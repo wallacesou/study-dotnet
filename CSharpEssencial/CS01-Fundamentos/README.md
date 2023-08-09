@@ -446,3 +446,102 @@ Console.WriteLine($"O valor ASCII do primeiro caractere é {ascii}");
 ```csharp
 Console.ReadKey();
 ```
+
+## Operadores Aritméticos
+
+### Operadores binários
+
+| Operação                  | Operador | Exemplo |
+| ------------------------- | -------- | ------- |
+| adição                    | `+`      | x + y   |
+| subtração                 | `-`      | x - y   |
+| multiplicação             | `*`      | x * y   |
+| divisão                   | `/`      | x / y   |
+| módulo (resto da divisão) | `%`      | x % y   |
+
+```csharp
+Console.Write("Digite um número: ");
+int x = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Digite outro número: ");
+int y = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine();
+
+Console.WriteLine($"Soma de {x} + {y} = {x+y}");
+Console.WriteLine($"Subtração de {x} - {y} = {x-y}");
+Console.WriteLine($"Multiplicação de {x} * {y} = {x*y}");
+Console.WriteLine($"Divisão de {x} / {y} = {x/y}");
+Console.WriteLine($"Módulo de {x} % {y} = {x%y}");
+```
+
+### Classe Math
+
+Possui constantes e diversos **métodos estáticos** usados para cálcuos matemáticos
+
+| Métodos    | Resultado                                  | Exemplo                 |
+| ---------- | ------------------------------------------ | ----------------------- |
+| `Math.PI`  | Representa o número PI                     | PI = 3.141516171819     |
+| `Math.E`   | Representa a base `e` do logaritmo natural | E = 2.7182818284590     |
+| `Cos(x)`   | Obtém o cosseno de `x`                     | Cos(2.0) = -0.4164...   |
+| `Sin(x)`   | Obtém o seno de `x`                        | Sin(2) = 0.909297       |
+| `Tan(x)`   | Obtém o tangente de `x`                    | Tan(1.5) = 14.1014      |
+| `Sqrt(x)`  | Calcula a raiz quadrada de `x`             | Sqrt(169) = 13          |
+| `Pow(x,y)` | Obtém o valor de `x` elevado a `y`         | Pow(2,4) = 16           |
+| `Abs(x)`   | Fornece o valor absoluto `x`               | Abs(-4.5) = 4.5         |
+| `Max(x,y)` | Obtém o maior valor entre dois números     | Max(2.46,2.56) = 2.56   |
+| `Min(x.y)` | Obtém o menor valor entre dois números     | Min(1.92,1.89) = 1.89   |
+| `Log10(x)` | Calcula o logaritmo `x` na base 10         | Log10(3.0) = 0.47712... |
+| `Log(x)`   | Calcula o logaritmo `x` na base `e`        | Log(3) = 1.098612       |
+| `Exp(x)`   | Retorna o exponencial (`e` elevado a `x`)  | Exp(5.0) = 54.59...     |
+
+```csharp
+Console.Write("Digite um número: ");
+int x = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Digite outro número: ");
+int y = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Raíz quadrada de {x} = {Math.Sqrt(x)}");
+Console.WriteLine($"Potência de {x} elevado a {y} = {Math.Pow(x,y)}");
+Console.WriteLine($"Valor máximo entre {x} e {y} = {Math.Max(x,y)}");
+Console.WriteLine($"Valor mínimo entre {x} e {y} = {Math.Min(x,y)}");
+Console.WriteLine($"Seno de {x} = {Math.Sin(x)}");
+Console.WriteLine($"Cosseno de {x} = {Math.Cos(x)}");
+Console.WriteLine($"Tangente de {x} = {Math.Tan(x)}");
+Console.WriteLine($"Exponencial de {x} = {Math.Exp(x)}");
+```
+
+## Inferência de Tipos
+
+A partir da versão 3.0 da linguagem C# as variáveis que forem declaradas no escopo do método podem possuir *um tipo implícito **var**.*
+
+Usar a palavra-chave **var** para instruir o compilador para *deduzir o tipo da variável da expressão* a partir do valor que é atribuído na sua inicialização.
+
+O tipo inferido pode ser *um tipo interno, um tipo anônimo, um tipo definido pelo usuário ou um tipo definido na biblioteca de classes da plataforma .NET*.
+
+```csharp
+var x = 0; // x é int
+
+var y; // error: implicity-typed
+```
+
+### Limitações
+
+- A palavra-chave **var** só pode ser usando quando uma variável local é declarada e inicializada na mesma instrução.
+
+- Não é possível inicializar a variável como **null**.
+
+- Múltiplas variáveis de tipo *implícito* não podem ser inicializadas na mesma instrução.
+
+- Não podemos alterar o tipo da variável **var** depois de inicializada.
+
+### Usos do Var
+
+- Considerado um açúcar sintático (*sugar syntax*)
+
+- Usada para declarar *tipos anônimos*
+
+- Usada em laços `for` e `foreach`
+
+- Usada em instruções `using`
