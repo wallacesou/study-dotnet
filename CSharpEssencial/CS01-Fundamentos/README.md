@@ -584,3 +584,115 @@ const int DIAS_ANO = 365;
 
 const float DIAS_POR_MES = (float)DIAS_ANO / (float)MESES_ANO;
 ```
+
+## Operadores Relacionais
+
+A característica dos operadores relacionais é que o resultado de uma operação relacional terá como resultado `true` ou `false` (*verdadeiro ou falso*).
+
+| Operador | Significado    | Exemplo (`int x = 10; y = 20;`)     |
+| -------- | -------------- | ----------------------------------- |
+| `==`     | Igualdade      | `x == y` (resultado será **False**) |
+| `>`      | Maior que      | `x > y` (resultado será **False**)  |
+| `<`      | Menor que      | `x < y` (resultado será **True**)   |
+| `>=`     | Maior ou igual | `x >= y` (resultado será **False**) |
+| `<=`     | Menor ou igual | `x <= y` (resultado será **True**)  |
+| `!=`     | Diferente de   | `x != y` (resultado será **True**)  |
+
+### Comparando números
+
+```csharp
+int x = 10;
+int y = 20;
+
+Console.WriteLine($"{x} == {y}: {x==y}");
+Console.WriteLine($"{x} > {y}: {x==y}");
+Console.WriteLine($"{x} < {y}: {x==y}");
+Console.WriteLine($"{x} >= {y}: {x==y}");
+Console.WriteLine($"{x} <= {y}: {x==y}");
+Console.WriteLine($"{x} != {y}: {x == y}");
+```
+
+### Comparando strings
+
+```csharp
+string a = "Curso";
+string b = "curso";
+Console.WriteLine(a == b);
+
+// Usando o método Equals()
+Console.WriteLine(a.Equals(b));
+```
+
+## Operadores Lógicos
+
+São usados em expressões lógicas e trabalham com operandos boolenaos e seu resultado será `true` ou `false` (*verdadeiro ou falso*).
+
+| Operação | Significado | a = true; b = false;  | Comportamento                                                                               |
+| -------- | ----------- | --------------------- | ------------------------------------------------------------------------------------------- |
+| `&&`     | AND         | `a && b` => `false`   | Retornará `false` se apenas uma das condições for **False**                                 |
+| `\||`    | OR          | `!(a && b)` => `true` | Retornará `true` se apenas uma das condições for **True**                                   |
+| `!`      | NOT         | `!(a && b)` => `true` | Inverte o resultado, retorna `false` se o resultado da expressão for **True**, e vice-versa |
+
+## Precedência de Operadores
+
+As expressões como operadores de maior precedência são avaliadas primeiro. Quando dois operadores tiverem a *mesma precedência* eles são avaliados com base na **associatividade** do operador que pode ser *da direita para esquerda* ou *da esquerda para a direita*.
+
+| Operadores  | Ordem de Precedência               | Associatividade            |
+| ----------- | ---------------------------------- | -------------------------- |
+| Aritméticos | `*`, `/`, `%`, `+`, `-`            | Da esquerda para a direita |
+| Atribuição  | `=`, `*=`, `/=`, `%=`, `+=`, `-=`  | Da direita para a esquerda |
+| Incremento  | `++`, `--`, (prefixo) `++a`, `--a` | Da direita para a esquerda |
+| Decremento  | `++`, `--`, (sufixo) `a++`, `a--`  | Da esquerda para a direita |
+| Relacionais | `<`, `>`, `<=`, `>=`, `==`, `!=`   | Da esquerda para a direita |
+| Lógicos     | `!`, `&&`, `\||`                   | Da esquerda para a direita |
+
+Os operadores `[]` e `()` possuem a maior ordem de precedência nesta ordem, e podem ser usados para alterar a ordem de precedência.
+
+```csharp
+int x = 10 - 2 * 3; // 4
+int y = (10 - 2) * 3 // 24
+bool a = !(9 != 8) && 5 >= 7 || 8 >= 6; // true
+bool b = !(9 != 8) && (5 >= 7 || 8 >= 6); // false
+```
+
+### Precedência de associatividade
+
+```csharp
+int a = 5, b = 6, c = 3;
+int resultado = a = b = c; // 3 - atribuição da direita para esquerda
+```
+
+## Operadores Unitários, Binários e Ternários
+
+### Operador Unitário
+
+```csharp
+int a = +5;
+float b = -2.7f;
+
+int x = 1;
+int y = +x;
+```
+
+### Operador Binário
+
+```csharp
+int a = 2 * 5;
+bool b = true && true;
+```
+
+### Operador Ternários (condicional)
+
+```csharp
+bool a = true, b = false;
+string resultado = a == b ? "é igual" : "é diferente";
+```
+
+#### Operador Ternário Aninhado
+
+```csharp
+int x = 10, y = 20;
+string msg = x > y ? "x é maior que y" :
+                    x < y ? "x é menor que y" :
+                    x == y ? "x é igual a y" : "sem resultado";
+```
