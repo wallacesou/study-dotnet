@@ -64,3 +64,68 @@ else
 }
 ```
 
+### Instrução Switch
+
+O bloco **switch-case** é uma estrutura de condição que define o código a ser executado com base em uma *comparação de valores*.
+
+A instrução **switch** pode ser usada para substituir as instruções **if**/**else-if**.
+
+Diferente das instruções **if else-if**, a instrução **switch** *não avalia uma expressão booleana* que retorna `true` ou `false`, mas avalia *o valor da variável ou expressão* da instrução **switch**.
+
+```csharp
+switch (variavel/expression)
+{
+    case valor1:
+        // código
+        break;
+    case valor2
+        // código
+        break;
+    default:
+        // código
+        break;
+}
+```
+
+#### Executando da mesma condição
+
+Podemos definir o mesmo bloco de código que é executada em múltiplas condições.
+
+```csharp
+switch(valor)
+{
+    case valor1:
+    case valor2:
+    case valor3: 
+        // código
+    case valor4:
+    case valor5:
+        // código
+    default:
+        // código
+}
+```
+
+#### Instruções Switch aninhadas
+
+Você pode usar **switch** dentro de **switch**.
+
+```csharp
+switch(expressao1)
+{
+    case 1:
+        // código
+    case 2:
+        // código
+        switch(expressao2)
+        {
+            case 1:
+                // código
+            case 2:
+                // código
+        }
+        break;
+    default:
+        // código
+}
+```
