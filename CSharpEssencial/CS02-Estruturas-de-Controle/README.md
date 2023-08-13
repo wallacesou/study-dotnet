@@ -151,3 +151,54 @@ repetir: // pode ser qualquer label, exceto palavras chaves
 if (i <= 10)
     goto repetir;
 ```
+
+### Loop: While
+
+A instrução `while` executa uma instrução ou um bloco de instrução enquanto uma expressão booleana especificada for avaliada como `true`.
+
+Como essa expressão é avaliada antes de cada execução do loop, um loop `while` pode *executar zero ou mais vezes*.
+
+```csharp
+var i = 1;
+
+while(i <= 10)
+{
+    Console.WriteLine(i);
+    i++;
+}
+```
+
+#### While: Instrução break
+
+A instrução `break` pode ser usada para encerrar uma instrução `switch` ou um loop (`while`, `for`, `if`, etc.) em uma determinada condição.
+
+```csharp
+while(true)
+{
+    Console.Write("Digite um número (999 para sair): ");
+    int num = Convert.ToInt32(Console.ReadLine());
+    if (num == 999)
+        break;
+    if (num % 2 == 0)
+        Console.WriteLine($"O número {num} é par");
+    else
+        Console.WriteLine($"O número {num} é impar");
+}
+```
+
+### Loop: do-while
+
+O loop `do-while` é uma variante do loop `while` e possui o mesmo comportamento.
+
+A diferença é que o loop `do-while` *executa o bloco de código pelo menos uma vez*, antes de avaliar a condição, e a seguir repete o loop enquanto a condição for `true`.
+
+```csharp
+int i = 1;
+do {
+    Console.WriteLine(i);
+    i++;
+}
+while (i <= 10);
+```
+
+A execução será interrompida quando a condição booleana for avaliada como `false`.
