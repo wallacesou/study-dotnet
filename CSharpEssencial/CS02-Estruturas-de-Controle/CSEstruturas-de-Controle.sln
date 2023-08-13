@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Instrucao-Switch", "Instruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loop-Goto-Label", "Loop-Goto-Label\Loop-Goto-Label.csproj", "{C63E034C-D996-49E3-A3AB-1E6C3E0C7144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop-While", "Loop-While\Loop-While.csproj", "{61835F60-67BA-42E4-BD74-F64EA78EB99A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loop-While", "Loop-While\Loop-While.csproj", "{61835F60-67BA-42E4-BD74-F64EA78EB99A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop-Do-While", "Loop-Do-While\Loop-Do-While.csproj", "{BD302A30-DA5C-4447-9EED-A3DED6A9FFCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loop-Do-While", "Loop-Do-While\Loop-Do-While.csproj", "{BD302A30-DA5C-4447-9EED-A3DED6A9FFCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop-For", "Loop-For\Loop-For.csproj", "{9E28931B-A49D-4022-A920-E3DCA20722C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instrucao-Break-Continue", "Instrucao-Break-Continue\Instrucao-Break-Continue.csproj", "{FAB6145A-6B15-473D-8068-42C07A1BC884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{BD302A30-DA5C-4447-9EED-A3DED6A9FFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD302A30-DA5C-4447-9EED-A3DED6A9FFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD302A30-DA5C-4447-9EED-A3DED6A9FFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E28931B-A49D-4022-A920-E3DCA20722C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E28931B-A49D-4022-A920-E3DCA20722C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E28931B-A49D-4022-A920-E3DCA20722C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E28931B-A49D-4022-A920-E3DCA20722C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAB6145A-6B15-473D-8068-42C07A1BC884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAB6145A-6B15-473D-8068-42C07A1BC884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAB6145A-6B15-473D-8068-42C07A1BC884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAB6145A-6B15-473D-8068-42C07A1BC884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

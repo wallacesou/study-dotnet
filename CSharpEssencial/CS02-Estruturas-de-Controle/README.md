@@ -202,3 +202,83 @@ while (i <= 10);
 ```
 
 A execução será interrompida quando a condição booleana for avaliada como `false`.
+
+### Loop: For
+
+Executa um *bloco de instruções* repetidamente até que a condição especificada se torne `false`.
+
+```csharp
+for(inicialização, condição, iteração)
+{
+    // código
+}
+```
+
+**Inicialização:** É usada para declarar e inicializar uma *variável de controle* que será local e não pode ser acessada fora do loop. É executada primeiro e apenas uma vez.
+
+**Condição:** É uma expressão booleana que retorna `true` ou `false`. Se a expressão for avaliada `true`, ela executará o *loop novamente*, caso contrário, o loop é encerrado.
+
+**Iteração:** É usada para incrementar ou decrementar a *variável de controle* do loop.
+
+```csharp
+for (int i = 1; i <= 10; i++)
+{
+    Console.WriteLine(i);
+}
+```
+
+#### For: Múltiplas Instruções
+
+Podemos usar várias expressões dentro de um loop **for**. Isso significa que podemos ter mais de uma instrução de inicialização e/ou iterador dentro de um loop `for`.
+
+```csharp
+for (int i = 0, j= 0; i+j <= 10; i++, j++)
+{
+    Console.WriteLine($"i = {i} | j = {j}");
+}
+```
+
+#### For: Seções Opcionais
+
+A inicialização, a condição e a instrução do iterador são opcionais em um loop `for` e assim podemos executar um loop `for` sem essas instruções.
+
+```csharp
+int i = 1;
+for (; i <= 5;)
+{
+    Console.WriteLine(i);
+    i++;
+}
+
+// ou
+
+int i = 1;
+for (;;) // loop infinito
+{
+    Console.WriteLine(i);
+    if (i >= 10)
+        break;
+}
+```
+
+### Instrução Break e Continue
+
+A instrução `break` pode ser usada para sair de um loop (`while`, `do while`, `for`, etc.) quando uma condição for atendida.
+
+A instrução `continue` interrompe (no loop), se ocorrer uma condição especificada, retorna e verifica a condição do loop e continua com a próxima iteração no loop.
+
+```csharp
+int i = 2;
+while (true)
+{
+    Console.WriteLine($"Quantidade de cartas: [{i}]");
+    Console.Write("Quer continuar? [sim/parar/pular]: ");
+    var option = Console.ReadLine().ToLower();
+    if (option == "parar")
+        break; // para o loop completamente
+    if (option == "pular")
+        continue; // continua para o início do loop
+    i += 3;
+    Console.WriteLine($"\tVocê agora tem mais {i} cartas");
+}
+```
