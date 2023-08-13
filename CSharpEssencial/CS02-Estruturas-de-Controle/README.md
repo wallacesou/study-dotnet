@@ -129,3 +129,25 @@ switch(expressao1)
         // código
 }
 ```
+
+## Estruturas de Repetição (*loops*)
+
+As estruturas de repetição são usadas para repetir instruções ou blocos de código.
+
+A decisão de repetir o código é baseada na avaliação de uma expressão lógica. Se a expressão for verdadeira, o código é executado.
+
+Uma estrutura de repetição permite especificar que uma ação seja repetida várias vezes, dependendo do valor de uma condição.
+
+### Loop: Goto e Label
+
+A instrução `goto` pode ser usada para *transferir o controle de uma parte para outra parte* do programa com ajuda de um identificador chamado de **label**.
+
+```csharp
+int i = 1;
+
+repetir: // pode ser qualquer label, exceto palavras chaves
+    Console.WriteLine(i);
+    i++;
+if (i <= 10)
+    goto repetir;
+```
