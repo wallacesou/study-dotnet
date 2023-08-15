@@ -84,3 +84,95 @@ class Pessoa
     public char Genero;
 }
 ```
+
+## Métodos
+
+Os métodos representam os comportamentos das classes e são usados para executar ações e realizar a comunicação entre os objetos das classes.
+
+Um método é um *bloco de código* que contém uma *série de instruções* que são executadas quando ele for chamado.
+
+No C#, todas as instruções executadas são realizadas no contexto de um método, e todos os métodos são definidos em classes.
+
+O método **Main** é o ponto de entrada para todos os aplicativos C# e é chamado pela **CLR** (*Common Language Runtime*) quando o programa é iniciado.
+
+> C# é uma linguagem orientada a objetos que *não possui funções* declaradas fora das classes. Por causa dessa rigorosidade no C#, chamamos de **métodos** e não **funções** (embora tenham praticamente o mesmo objetivo).
+
+```csharp
+class MinhaClasse
+{
+    void MeuMetodo()
+    {
+        Console.WriteLine("Isso é um método");
+    }
+}
+```
+
+### Métodos: Parâmetros
+
+Um parâmetro é um valor passado para o método.
+
+Os métodos podem receber um ou mais parâmetros que são especificados dentro dos parênteses, após a definição do nome do método, e são separados por vírgulas.
+
+Na definição do método devemos informar *o tipo e o nome do parâmetro*.
+
+```csharp
+Mensagens msg = new Mensagens();
+msg.AprensetarPessoa("Maria", 'F');
+
+class Mensagens
+{
+    public void AprensetarPessoa(string nome, char genero)
+    {
+        Console.WriteLine("Olá {0}, seja bem vind{1} ao sistema!", nome, genero == 'F' ? "a" : "o");
+    }
+}
+```
+
+### Métodos: Passando Parâmetros Entre Classes
+
+```csharp
+Aluno aluno = new Aluno();
+Console.Write("Nome: ");
+aluno.Nome = Console.ReadLine();
+Console.Write("Idade: ");
+aluno.Idade = Convert.ToInt32(Console.ReadLine());
+Console.Write("Gênero: ");
+aluno.Genero = Console.ReadLine().ToUpper()[0];
+Console.Write("Aprovado: ");
+aluno.Aprovado = Convert.ToBoolean(Console.ReadLine());
+Console.WriteLine();
+
+Curso curso = new Curso();
+curso.Resultado(aluno);
+
+class Aluno
+{
+    public string? Nome;
+    public int Idade;
+    public char Genero;
+    public bool Aprovado;
+}
+
+class Curso
+{
+    public void Resultado(Aluno a)
+    {
+        Console.WriteLine($"Aluno: {a.Nome}");
+        Console.WriteLine($"Idadde: {a.Idade}");
+        if (a.Genero == 'F')
+            Console.WriteLine("Gênero: Feminino");
+        else if (a.Genero == 'M')
+            Console.WriteLine("Gênero: Masculino");
+        if (a.Aprovado)
+            Console.WriteLine("Aluno aprovado!");
+        else
+            Console.WriteLine("Aluno reprovado!");
+    }
+}
+```
+
+Quando *um tipo de referência é passado por valor* a um método, esse método receberá uma cópia da referência para a instância da classe.
+
+O método chamado recebe uma *cópia do endereço da instância* e o método de chamada retém o endereço original da instância.
+
+A instância de classe no método de chamada tem um endereço, o parâmetro do método chamado tem uma cópia do endereço e os dois endereços se referem ao mesmo objeto.
