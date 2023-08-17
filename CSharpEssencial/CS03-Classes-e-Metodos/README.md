@@ -357,3 +357,58 @@ Representa o objeto que está em execução, e assim, usando `this`, de forma im
      }
    }
    ```
+
+## Métodos: Retorno
+
+Os métodos podem retornar um valor para o chamador.
+
+Se o tipo de retorno (o tipo listado antes do nome do método) não for `void`, o método poderá retornar o valor usando a palavra-chave `return`.
+
+Uma instrução com a palavra-chave `return` seguida por uma variável, constante ou expressão que corresponde ao tipo de retorno retornará esse valor para o chamador do método.
+
+```csharp
+public int Somar(int n1, n2)
+{
+    return n1 + n2;
+}
+```
+
+## Métodos: Sobrecarga
+
+**Assinatura de um método** é uma identificação exclusiva de um método para o compilador C#.
+
+A **assinatura de um método** é formada assim:
+
+- Nome do método
+
+- O número de parâmetros
+
+- O tipo dos parâmetros
+
+- A ordem dos parâmetros
+
+O tipo de retorno *não faz parte* da assinatura do método.
+
+Não é possível ter dois métodos com a mesma assinatura.
+
+```csharp
+class Calculadora
+{
+    public int Somar(int n1, int n2) // a assinatura deste método é única
+    {
+        return n1 + n2;
+    }
+    public int Somar(int n1, int n2, int n3) // diferencia pela quantidade de parâmetros
+    {
+        return n1 + n2 + n3;
+    }
+    public double Somar(int n1, double n2) // diferencia pelo tipos dos parâmetros
+    {
+        return n1 + n2;
+    }
+    public double Somar(double n1, int n2) // diferencia pela ordem dos tipos
+    {
+        return n1 + n2;
+    }
+}
+```
