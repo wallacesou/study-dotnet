@@ -514,3 +514,90 @@ class Circulo
     }
 }
 ```
+
+## Diferença de argumento e parâmetro
+
+Um **parâmetro** representa *um valor que o método espera receber* quando for chamado; quando criamos o método, definimos seus parâmetros.
+
+Um **argumento** representa *o valor que você passa* para um *parâmetro de método* quando você chama o método.
+
+```csharp
+...
+var soma = calc.Somar(10, 10); // argumentos
+
+public int Somar(int n1, int n2) // parâmetros
+{
+    return n1+n2;
+}
+```
+
+## Argumentos Nomeados
+
+Permitem que você especifique *um argumento* para *um parâmetro* correspondendo *o argumento com seu nome* em vez de *com sua posição* na lista de parâmetros.
+
+Liberam o programador da necessidade de combinar *a ordem dos argumentos* com *a ordem dos parâmetros* nas listas de parâmetros de métodos chamados.
+
+O *argumento* para cada *parâmetro* pode ser especificado pelo *nome do parâmetro*.
+
+```csharp
+Email email = new Email();
+email.Enviar(titulo: "Urgente", assunto: "Próxima reunião com os devs dia 15/05", destino: "email@email.com");
+/* os argumentos acima não precisam
+ * estar na mesma ordem dos
+ * parâmetros declarados nos métodos
+ * se usarmos argumentos nomeados
+ */
+
+Console.ReadKey();
+
+class Email
+{
+    public void Enviar(string destino, string titulo, string assunto)
+    {
+        Console.WriteLine("------------------------------");
+        Console.WriteLine($"Para: {destino, 24}");
+        Console.WriteLine("------------------------------");
+        Console.WriteLine($"Assunto: {titulo.ToUpper()}");
+        Console.WriteLine("------------------------------");
+        Console.WriteLine(assunto);
+    }
+}
+```
+
+## Parâmetros Opcionais
+
+Permitem definir *parâmetros* em uma assinatura de método que o chamador do método *pode omitir*.
+
+Cada *parâmetro opcional deve ter* um *valor padrão* como parte de sua definição.
+
+Se *nenhum argumento for enviado* para esse parâmetro, o *valor padrão deverá ser usado.*
+
+Os parâmetros opcionais devem ser definidos *no final da lista de parâmetros*, depois de todos os parâmetros obrigatórios (se existirem).
+
+```csharp
+Email email = new Email();
+email.Enviar("dev1@email.com");
+email.Enviar("dev2@email.com", assunto: "Alguns projetos estão pendentes...");
+/* os argumentos acima usam
+ * os valores opcionais dos parâmetros
+ * caso os argumentos não sejam informados.
+ * Podemos até omitir um argumento
+ * no meio da lista de parâmetros se
+ * usarmos arguementos nomeados.
+ */
+
+Console.ReadKey();
+
+class Email
+{
+    public void Enviar(string destino, string titulo = "Relatório semanal", string assunto = "Segue em anexo o resumo dos seus projetos...")
+    {
+        Console.WriteLine("------------------------------");
+        Console.WriteLine($"Para: {destino,24}");
+        Console.WriteLine("------------------------------");
+        Console.WriteLine($"Assunto: {titulo.ToUpper()}");
+        Console.WriteLine("------------------------------");
+        Console.WriteLine(assunto);
+    }
+}
+```
