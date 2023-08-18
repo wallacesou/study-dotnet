@@ -412,3 +412,105 @@ class Calculadora
     }
 }
 ```
+
+## Passagem de argumentos por valor e referência
+
+No C#, existe duas maneiras de passar argumentos para parâmetros de métodos:
+
+### Passagem de argumentos por valor (padrão)
+
+- Uma *cópia do valor do argumento* é feita e passada para o parâmetro do método chamado
+
+- As alterações na cópia não afetam o valor da variável original no chamador
+
+```csharp
+int x = 20; // variável 'x' inicializada com o valor '20'
+Console.WriteLine($"Valor de x: {x}");
+
+Calculo calc = new Calculo(); // objeto criado
+
+Console.WriteLine("Valor de y: " + calc.Dobrar(x)); // é passado uma cópia como argumento para 'y'
+
+Console.WriteLine($"Valor de x: {x}"); // a variável 'x' continua com o valor '20'
+
+class Calculo
+{
+    public int Dobrar(int y)
+    {
+        return y *= 2;
+    }
+}
+```
+
+### Passagem de argumento por referência (ref e out)
+
+- Passa a *referência ao mesmo local da memória* dos argumentos para os parâmetros; nenhuma cópia é passada.
+
+- O chamador dá ao método a capacidade de *acessar e modificar a variável original do chamador (passa o acesso à variável para o método)*
+
+- Para fazer isso usamos as palavras chave `ref` e `out`
+
+#### Com ref:
+
+```csharp
+int x = 20; // variável 'x' inicializada com o valor '20'
+Console.WriteLine($"Valor de x: {x}");
+
+Calculo calc = new Calculo(); // objeto criado
+
+Console.WriteLine("Valor de y: " + calc.Dobrar(ref x)); // é passado a cópia da referência do argumento 'x' para 'y'
+
+Console.WriteLine($"Valor de x: {x}"); // a variável 'x' agora é '40'
+
+class Calculo
+{
+    public int Dobrar(ref int y)
+    {
+        return y *= 2; // aqui a instrução trabalha na mesma área da memória da variável 'x'
+    }
+}
+```
+
+#### Com out:
+
+- A palavra-chave `out` faz com que os argumentos sejam passados **por referência**
+
+- Devemos usar `out` na *declaração do método* e na *invocação do método*
+
+- A principal diferença é que `out` transfere dados *para fora do método* e não para dentro dele
+
+No entanto o método chamado *deve atribuir um valor ao parâmetro* definido com a `out` antes que o método seja retornado.
+
+```csharp
+Console.Write("Digite o RAIO do círculo: ");
+double raio = Convert.ToDouble(Console.ReadLine());
+
+Circulo circulo = new Circulo();
+/* 
+double area = circulo.Area(raio);
+double perimetro = circulo.Perimetro(raio);
+    // Antes eu precisava criar essas duas variáveis //
+*/
+
+double perimetro = circulo.AreaPerimetro(raio, out double area); // 'out' torna possível que a variável 'area' seja criada com o valor recebido do método a partir desse ponto
+
+Console.WriteLine($"Area: {area}"); // agora eu posso usar a variável 'area'
+Console.WriteLine($"Perímetro: {perimetro}");
+
+class Circulo
+{
+    public double Area(double raio)
+    {
+        return Math.PI * Math.Pow(raio, 2);
+    }
+    public double Perimetro(double raio)
+    {
+        return 2 * Math.PI * raio;
+    }
+    public double AreaPerimetro(double raio, out double areaCalculada)
+    {
+        areaCalculada = Math.PI * Math.Pow(raio, 2);
+        return 2 * Math.PI * raio;
+    }
+}
+```
