@@ -601,3 +601,50 @@ class Email
     }
 }
 ```
+
+## Métodos Estáticos
+
+Um método estático é definido usando *modificador* `static` na declaração do método.
+
+O *modificador* `static` pode ser usado em *classes*, *interfaces*, *structs*, *campos*, *métodos*, *propriedades*, *operadores*, *eventos* e *construtores*.
+
+```csharp
+Calculadora.Somar(9, 2);
+Calculadora.Subtrair(8, 5);
+Calculadora.Multiplicar(5, 3);
+Calculadora.Dividir(10, 2);
+
+class Calculadora
+{
+    // métodos estáticos
+    public static int Somar(int n1, int n2) => n1 + n2;
+    public static int Subtrair(int n1, int n2) => n1 - n2;
+    public static double Multiplicar(double n1, double n2) => n1 * n2;
+    public static double Dividir(double n1, double n2) => n1 / n2;
+}
+```
+
+Os métodos estáticos são métodos que *não dependem de um objeto*, ou seja, não dependem da criação de uma instância da classe para serem acessados.
+
+Os métodos estáticos pertecem **à classe** e não ao **objeto**.
+
+Como o método estático *não possui ligação com um objeto*, ele não pode usar variáveis de instância, que são variáveis do objeto.
+
+Exemplo: Classes **Math** e **Console**.
+
+## Membros Estáticos
+
+Um membro estático é definido usando o *modificador* `static` na declaração do *membro*.
+
+```csharp
+ClasseA objetoA = new ClasseA();
+
+objetoA.x = 1; // atribuindo valor à instância da classe
+A.y = 2; // atribuindo valor diretamente ao membro da classe
+
+class A
+{
+    public int x;
+    public static int y;
+}
+```
