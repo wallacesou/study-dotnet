@@ -648,3 +648,86 @@ class A
     public static int y;
 }
 ```
+
+## Construtor Estático
+
+Um construtor estático é usado para *inicializar quaisquer membros estáticos* ou para executar uma ação específica que precisa ser executada *apenas uma vez*.
+
+Ele é chamado automaticamente *antes que a primeira instância seja criada* ou que quaisquer membros estáticos sejam referenciados.
+
+> Membros estáticos são membros que usam o modificador `static` e que estão associados com **a classe** e não com uma *instância particular da classe*, ou seja, para acessar membros estáticos não precisamos criar uma instância da classe.
+
+### Construtor Estático: Propriedades
+
+- Um construtor *não usa* modificadores de acesso nem tem parâmetros
+
+- Uma **classe** ou **struct** só pode ter *um único construtor estático*
+
+- Um construtor estático *não pode* ser chamado diretamente
+
+- O usuário *não tem controle* sobre quando o construtor estático é executado no programa
+
+- Se você não fornecer um construtor estático para inicializar *campos estáticos*, todos os campos estáticos serão inicializados com seu valor padrão
+
+- Se um construtor estático gerar uma exceção, o *runtime* não o invocará uma segunda vez, e o membro estático permanecerá não inicializado durante o tempo de vida do aplicativo
+
+```csharp
+class MinhaClasse
+{
+    // só podemos ter um construtor estático
+    static MinhaClasse() // sem modificadores de acesso e sem parâmetros
+    {
+        // código
+    }
+}
+```
+
+> Podemos ter outros construtores na **classe/struct** além do construtor estático
+
+## Propriedades
+
+Uma propriedade é um *membro* da classe que fornece um mecanismo para ler, gravar ou calcular o valor de um *campo privado*.
+
+As propriedades podem ser usadas como se fossem *membros de dados públicos*, mas possuem métodos especiais chamados *acessadores*.
+
+Esse recurso permite que os dados sejam acessados com facilidade e ainda ajuda a promover a segurança e a flexibilidade dos métodos.
+
+> As propriedades permitem que uma classe exponha uma maneira pública de obter e definir valores, enquanto *oculta o código de implementação ou verificação*.
+
+```csharp
+public class Pessoa
+{
+    private string nome; // campo
+    public string Nome { get; set; } // propriedade, acessadores: get, set
+}
+```
+
+### Propriedades: Somente Leitura e Somente Gravação
+
+- **Propriedades leitura e gravação:**
+
+```csharp
+public string Nome { get; set; }
+```
+
+- **Somente leitura:**
+
+```csharp
+public string Nome { get; } // podemos apenas ler o valor
+```
+
+- **Somente gravação:**
+
+```csharp
+public string Idade { set; } // podemos apenas atribuir o valor
+```
+
+### Propriedades: Vantagens
+
+Permitem um melhorar controle dos membros da classe (*reduz a possibilidade de o programador bagunçar o código*).
+
+São mais flexíveis pois o programador pode alterar uma parte do código sem afetar outras partes.
+
+Garantem uma maior segurança dos dados permitindo controlar o acesso.
+
+> Um dos pilares da programação orientada a objetos é justamente o *encapsulamento* da classe, e isso significa que o trabalho interno de uma classe deve ser escondido do mundo exterior. O uso de propriedades respeita esse pilar.

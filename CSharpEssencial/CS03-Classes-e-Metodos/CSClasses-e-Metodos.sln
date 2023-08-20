@@ -31,9 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArgumentosNomeados", "Argum
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParametrosOpcionais", "ParametrosOpcionais\ParametrosOpcionais.csproj", "{DA115C7A-7888-4B65-9BE5-CF27ADF9DC59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetodosEstaticos", "MetodosEstaticos\MetodosEstaticos.csproj", "{E17E8320-D025-49A5-A948-BBDAED72E2E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetodosEstaticos", "MetodosEstaticos\MetodosEstaticos.csproj", "{E17E8320-D025-49A5-A948-BBDAED72E2E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembrosEstaticos", "MembrosEstaticos\MembrosEstaticos.csproj", "{1C4E0FFE-CAF2-46CE-A025-F855F04E3B1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembrosEstaticos", "MembrosEstaticos\MembrosEstaticos.csproj", "{1C4E0FFE-CAF2-46CE-A025-F855F04E3B1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstrutorEstatico", "ConstrutorEstatico\ConstrutorEstatico.csproj", "{DEFE4DEF-F041-4933-BFA2-5878211E1AC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Propriedades", "Propriedades\Propriedades.csproj", "{E2C636C1-6487-4489-9365-9637731A086C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +109,14 @@ Global
 		{1C4E0FFE-CAF2-46CE-A025-F855F04E3B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C4E0FFE-CAF2-46CE-A025-F855F04E3B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C4E0FFE-CAF2-46CE-A025-F855F04E3B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFE4DEF-F041-4933-BFA2-5878211E1AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFE4DEF-F041-4933-BFA2-5878211E1AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFE4DEF-F041-4933-BFA2-5878211E1AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFE4DEF-F041-4933-BFA2-5878211E1AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C636C1-6487-4489-9365-9637731A086C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C636C1-6487-4489-9365-9637731A086C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C636C1-6487-4489-9365-9637731A086C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C636C1-6487-4489-9365-9637731A086C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
