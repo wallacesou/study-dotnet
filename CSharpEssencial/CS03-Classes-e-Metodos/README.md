@@ -731,3 +731,40 @@ São mais flexíveis pois o programador pode alterar uma parte do código sem af
 Garantem uma maior segurança dos dados permitindo controlar o acesso.
 
 > Um dos pilares da programação orientada a objetos é justamente o *encapsulamento* da classe, e isso significa que o trabalho interno de uma classe deve ser escondido do mundo exterior. O uso de propriedades respeita esse pilar.
+
+## Structs
+
+**Struct** é um tipo de dado definido pelo usuário que é composta por outros tipos de dados e funcionalidades (*semelhante a uma classe*).
+
+**Struct** pode conter campos, métodos, constantes, construtores, propriedades, indexadores, operadores e mesmo outros tipos de estruturas.
+
+A principal diferença entre **classe** e **struct** é que **structs** são **tipos de valor** e não de referência (*membros e instâncias de uma struct são criadas na memória Stack e contém seus dados*).
+
+> Uma struct é uma alternativa mais leve para uma classe.
+
+```csharp
+struct Pessoa
+{
+    public string Nome;
+    public int Idade;
+
+    public void Exibir()
+    {
+        Console.WriteLine($"Nome: {Nome}\nIdade: {Idade}");
+    }
+}
+```
+
+### Quando usar Structs?
+
+**CONSIDERE** usar o tipo `struct` em vez de uma classe se as instâncias do tipo forem *pequenas e normalmente de curta duração* ou se forem comumente incorporadas em outros tipos de objetos.
+
+**EVITE** definir um tipo `struct`, a menos que o tipo tenha todas as características a seguir:
+
+1. Representa logicamente um único valor, semelhante aos tipos primitivos (*int, double*).
+
+2. Tem um tamanho de *instância inferior a 16 bytes*.
+
+3. É imutável.
+
+4. Não precisará *sofrer conversão para tipo de referência (boxing)* com frequência
