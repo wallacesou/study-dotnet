@@ -768,3 +768,111 @@ struct Pessoa
 3. É imutável.
 
 4. Não precisará *sofrer conversão para tipo de referência (boxing)* com frequência
+
+## Enum
+
+**Enum** ou *Enumeration* é um *tipo de dado especial* definido pelo usuário.
+
+Um **enum** é uma "classe" especial que é definida por um *conjunto de constantes nomeados* do *tipo numérico*.
+
+O uso do tipo **enum** ajuda a tornar o programa mais fácil de entender e manter.
+
+```csharp
+Console.WriteLine(DiasDaSemana.Sexta); // Sexta
+
+// Para exibir o valor do membro do enumerador
+Console.WriteLine((int)DiasDaSemana.Sexta); // 4
+
+enum DiasDaSemana
+{
+    Segunda,
+    Terça,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sábado,
+    Domingo
+}
+```
+
+Podemos definir valores dentro de **enums**:
+
+```csharp
+enum CodigoDeErro
+{
+    Nenhum = 0,
+    Desconhecido = 1,
+    ConexaoFalhou = 100,
+    DadosInvalidos = 200
+}
+```
+
+Por padrão, os valores associados aos membros de um **enum** são do tipo `int`.
+
+O primeiro membro **de um enum** tem o valor 0 e o valor de cada membro seguinte é incrementada de 1 (*quando nenhum valor for atribuído*).
+
+```csharp
+enum Categorias
+{
+    Moda,          // 0
+    Automotivo,    // 1
+    Artes,         // 2
+    Bebidas,       // 3
+    Livros,        // 4
+    Brinquedos     // 5
+}
+```
+
+Um **enum** é um **tipo de valor** que é alocado na memória **Stack**.
+
+Podemos atribuir valores diferentes aos membros de uma enum.
+
+Uma alteração no valor padrão de um membro **enum** atribuída *automaticamente* valores *incrementais* aos outros membros sequencialmente.
+
+```csharp
+enum Categorias
+{
+    Moda,          // 0
+    Automotivo,    // 1
+    Artes = 5,     // 5
+    Bebidas,       // 6
+    Livros,        // 7
+    Brinquedos     // 8
+}
+```
+
+Podemos atribuir valores diferentes a cada membro de uma enum:
+
+```csharp
+enum Categorias
+{
+    Moda = 1,
+    Automotivo = 5,
+    Artes = 6,
+    Bebidas = 10,
+    Livros = 12,
+    Brinquedos = 15
+}
+```
+
+Um **enum** pode ser de qualquer tipo de dado numérico como: `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long `ou `ulong`.
+
+Para definir o tipo basta informar o nome do tipo após o nome do enum:
+
+```csharp
+Console.WriteLine(DiasDaSemana.Sexta); // Sexta
+
+// Para exibir o valor do membro do enumerador
+Console.WriteLine((byte)DiasDaSemana.Sexta); // 4
+
+enum DiasDaSemana : byte
+{
+    Segunda,
+    Terça,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sábado,
+    Domingo
+}
+```
