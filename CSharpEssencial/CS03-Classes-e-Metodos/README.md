@@ -876,3 +876,46 @@ enum DiasDaSemana : byte
     Domingo
 }
 ```
+
+## Modificadores de Acesso
+
+Os modificadores de acesso são palavras-chave usadas para especificar o acesso de **um membro** *(membro, propriedade, método, etc.)* ou de **um tipo** *(classe, struct, etc.)*
+
+Temos os seguintes modificadores de acesso:
+
+`public` - O *tipo ou membro* pode ser acessado por qualquer outro código no mesmo *assembly* ou em outro *assembly* que faz referência a ele.
+
+`private` - O *tipo ou membro* pode ser acessado somente pelo código na *mesma classe ou struct*.
+
+`internal` - O *tipo ou membro* pode ser acessado por qualquer código no mesmo assembly, mas não de outro *assembly*.
+
+`protected` - O *tipo ou membro* pode ser acessado por qualquer código no *assembly* no qual ele é declarado ou de uma *classe derivada* em outro *assembly*.
+
+`file` - *(incluído a partir do C# 10)* Restringe o escopo e a visibilidade de um *tipo* de nível superior ao arquivo no qual ele for declarado.
+
+| Modificador de Acesso ....................................... | *Subclasses* no Assembly | Classes no Assembly | Subclasses fora do Assembly | Classes fora do Assembly |
+| ------------------------------------------------------------- |:------------------------:|:-------------------:|:---------------------------:|:------------------------:|
+| `public`                                                      | ×                        | ×                   | ×                           | ×                        |
+| `protected internal`                                          | ×                        | ×                   | ×                           |                          |
+| `internal`                                                    | ×                        | ×                   |                             |                          |
+| `protected`                                                   | ×                        | ×                   | ×                           |                          |
+| `private protected`                                           | ×                        | ×                   |                             |                          |
+| `private`                                                     | ×                        |                     |                             |                          |
+
+- **Subclasses** - É a classe derivada, a classe filha que foi herdada da classe pai
+
+- **Assembly** - É o arquivo **.exe** ou **.dll** gerado pela aplicação .NET em cada projeto da solução
+
+> Uma boa prática é limitar a visibilidade de seus tipos e/ou membros restringindo-os apenas a quem realmente precisa acessar o *tipo ou membro*.
+
+### Valor padrão dos modificadores de acesso
+
+A menos que você especifique o modificador de acesso, esses são os valores padrões:
+
+| Recurso                        | Valor Padrão |
+| ------------------------------ | ------------ |
+| Classe                         | `internal`   |
+| Struct                         | `internal`   |
+| Interface                      | `internal`   |
+| Enum                           | `internal`   |
+| Métodos, Campos e Propriedades | `private`    |
