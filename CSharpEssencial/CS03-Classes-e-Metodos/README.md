@@ -919,3 +919,70 @@ A menos que você especifique o modificador de acesso, esses são os valores pad
 | Interface                      | `internal`   |
 | Enum                           | `internal`   |
 | Métodos, Campos e Propriedades | `private`    |
+
+## Bloco Try-Catch
+
+Uma exceção é um erro que ocorre em *tempo de execução* em um programa, que viola uma condição que não foi especificada para acontecer durante a operação normal.
+
+Se o programa não fornecer o código para *tratar uma exceção*, o sistema vai parar a execução do programa com uma mensagem de erro *(lançar uma exceção)*.
+
+Desta forma as exceções que podem ocorrer em um aplicativo devem ser tratadas para evitar *travamentos e resultados inesperados* e continuar a execução do código quando isso for possível.
+
+Para lidar com exceções, a linguagem C# fornece suporte interno através do uso do bloco `try`-`catch`.
+
+```csharp
+try
+{
+    // código que pode gerar uma exceção
+}
+catch
+{
+    // caso aja uma exceção, o erro será tratado aqui
+}
+```
+
+Podemos também usar o bloco `finally` (opcional) que *sempre será executado* e que é usado para liberar recursos usados no programa ou realizar outra tarefa.
+
+```csharp
+try
+{
+    // código que pode gerar uma exceção
+}
+catch
+{
+    // caso aja uma exceção, o erro será tratado aqui
+}
+finally
+{
+    // um código que será executado independente se houver uma exceção ou não
+}
+```
+
+### Tratamento de exceção: Propriedades da exceção (Exception)
+
+Uma **exceção** contém diversas propriedades *somente leitura* que mostram informações sobre a exceção que cousou o erro. Abaixo temos as principais:
+
+| Propriedade      | Tipo      | Descrição                                                                                           |
+| ---------------- | --------- | --------------------------------------------------------------------------------------------------- |
+| `Message`        | String    | Contém uma mensagem de erro explicando a causa da exceção.                                          |
+| `StackTrace`     | String    | Contém a informação que descreve a onde a exceção ocorreu.                                          |
+| `InnerException` | Exception | Se a exceção foi lançada por outra exceção, esta propriedade contém a referência da antiga exceção. |
+
+```csharp
+try
+{
+    // código que pode gerar uma exceção
+}
+catch (Exception ex)
+{
+    // caso aja uma exceção especificada, o erro será tratado aqui
+}
+catch
+{
+    // caso aja uma exceção genérica, o erro será tratado aqui
+}
+finally
+{
+    // um código que será executado independente se houver uma exceção ou não
+}
+```
