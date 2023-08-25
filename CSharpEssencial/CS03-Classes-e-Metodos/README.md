@@ -986,3 +986,65 @@ finally
     // um código que será executado independente se houver uma exceção ou não
 }
 ```
+
+## Tipos Anônimos
+
+Um tipo anônimo é um tipo (*classe*) sem nenhum nome que pode conter apenas propriedades públicas somente leitura.
+
+Os tipos anônimos fornecem uma maneira conveniente para encapsular um conjunto de propriedades somente leitura em um único objeto sem precisar primeiro definir explicitamente um tipo.
+
+O nome do tipo é *gerado pelo compilador* e não está disponível no código-fonte e o tipo de cada propriedade é *inferido pelo compilador*.
+
+```csharp
+var aluno = new
+{
+    Nome = "Maria",
+    Idade = 25
+};
+
+Console.WriteLine(aluno.Nome);
+Console.WriteLine(aluno.Idade);
+```
+
+Um tipo anônimo pode ter uma propriedade de outro tipo anônimo:
+
+```csharp
+var aluno = new
+{
+    Id = 1,
+    Nome = "Matt",
+    Email = "matt@email.com",
+    Endereco = new { Id = 1, Cidade = "Londres", Pais = "Reino Unido" }
+}
+
+Console.WriteLine($"{aluno.Nome} mora em {aluno.Endereco.Cidade}");
+```
+
+Podemos criar um array de tipos anônimos:
+
+```csharp
+var alunos = new[]
+{
+    new { Id = 1, Nome = "Maria", Email = "maria@email.com" },
+    new { Id = 2, Nome = "Martin", Email = "martin@email.com" },
+    new { Id = 3, Nome = "Julian", Email = "julian@email.com" }
+}
+
+Console.WriteLine($"Aluno: {alunos[2].Nome} | E-mail: {alunos[2].Email}");
+```
+
+### Tipos anônimo: características
+
+São os tipos de referência que derivam diretamente de **Object**.
+
+Contêm uma ou mais *propriedades públicas somente leitura*.
+
+Nenhum outro tipo de membro de classe, como métodos ou eventos, é válido; e a expressão usada para inicializar uma propriedade não pode ser *nula, uma função anônima ou um tipo de ponteiro*.
+
+Se dois ou mais tipos anônimos tiverem o *mesmo número de tipos de propriedades na mesma ordem*, o compilador irá tratá-los como o mesmo tipo eles compartilham as mesmas informações de tipo gerado pelo compilador.
+
+Sempre será local para o método no qual for definido e não pode ser retornado do método.
+
+Pode ser passado para outro método como parâmetro de tipo de objeto, mas isso não é recomendado.
+
+> Tipos anônimos são normalmente usados em uma cláusula **Select** de uma expressão de consulta, geralmente com a LINQ, para retornar um subconjunto das propriedades de cada objeto na sequência de origem.
