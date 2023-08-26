@@ -1048,3 +1048,68 @@ Sempre será local para o método no qual for definido e não pode ser retornado
 Pode ser passado para outro método como parâmetro de tipo de objeto, mas isso não é recomendado.
 
 > Tipos anônimos são normalmente usados em uma cláusula **Select** de uma expressão de consulta, geralmente com a LINQ, para retornar um subconjunto das propriedades de cada objeto na sequência de origem.
+
+## Partial Class
+
+Quando definimos uma classe usando a sintaxe padrão da linguagem C#, temos que definir em *um único arquivo físico* com extensão **.cs** todos os membros da classe.
+
+Nessa abordagem não podemos declarar uma classe em dois arquivos separados em um mesmo projeto.
+
+A partir da versão 2.0 a plataforma .NET introduziu o recurso chamado ***partial class*** que permite que uma classe venha a ser implementada em *múltiplos arquivos físicos* com extensão **.cs**.
+
+Desta forma é possível dividir a definição de uma **classe, struct, interface ou método** em dois ou mais arquivos de origem.
+
+Cada arquivo de origem contém a definição de *membros, tipos ou métodos* e todas as partes são combinadas quando o aplicativo for compilado.
+
+- Podemos criar **classes, interfaces, structs e métodos** *parciais* usando o modificador `partial`:
+
+```csharp
+// nome do arquivo: "MinhaPartialClassProps.cs"
+public partial class MinhaPartialClass
+{
+    public DateTime DataDeNascimento { get; set; }
+    public string Nome { get; set; }
+}
+```
+
+```csharp
+// nome do arquivo: "MinhaPartialClassMetodos.cs"
+public partial class MinhaPartialClass
+{
+    public TimeSpan CalculaIdade(DateTime dataNascimento)
+    {
+        return (DateTime.Now.Date - dataNascimento);
+    }
+    public TimeSpan DiferencaEntreDatas(DateTime data1, DateTime data2)
+    {
+        var diferenca = data1.Subtract(data2);
+        return diferenca;
+    }
+}
+```
+
+O compilador vai juntar tudo em uma única classe.
+
+### Partial Class - Regras
+
+- Todas as definições das *classes parciais* devem estar no mesmo **assembly** e no mesmo **namespace**
+
+- Todas as partes devem possuir a mesma acessibilidade como `public` ou `private`, etc.
+
+- Se qualquer parte for declarada **abstract**, então toda a classe será declarada do mesmo tipo
+
+- O modificador **partial** somente pode ser usado *antes* da palavra-chave **class**, **struct**, ou **interface**
+
+- **Tipos** parciais **aninhados** são permitidos
+
+- Os **atributos** se aplicam a todas as partes da classe
+
+- As características definidas em qualquer parte estão disponíveis para todas as partes da classe
+
+### Partial Class - Quando usar
+
+- Ao trabalhar em projetos grandes, dividir uma classe em arquivos separados permite que vários programadores trabalharem ao mesmo tempo
+
+- Ao trabalhar com código-fonte gerado automaticamente, o código pode ser adicionado à classe sem precisar recriar o arquivo de origem
+
+- Ao usar geradores de código fonte (**sources generators**) para gerar funcionalidade adicional em uma classe
