@@ -137,3 +137,35 @@ static void ExibirArray(string[] nomes)
     Console.WriteLine("\n");
 }
 ```
+
+## Modificador Params
+
+Esse modificador permite o parâmetro receber os valores separados por vírgula, sem a necessidade de instanciar o array ao passar como argumento.
+
+```csharp
+Calcular.Somar(7, 3, 2, 6, 1, 8 ); // com 'params' é possível passar os valores diretamente no método separados por vírgula
+
+public class Calcular
+{
+    public static int Soma(params int[] numeros)
+    {
+        return numeros.Sum();
+    }
+}
+```
+
+- Nenhum parâmetro adicional é permitido após a palavra-chave `params` em uma declaração de método.
+
+- Apenas uma palavra-chave `params` é permitida em uma declaração de método.
+
+- Deve ser o *último argumento* na lista de parâmetros do método.
+
+- Se o tipo declarado do parâmetro `params` não for um *array unidimensional*, vai ocorrer o erro do compilador **CS0225**.
+
+**Ao chamar um método com um parâmetro `params`, podemos passar:**
+
+- Uma lista separada por vírgula de argumentos do tipo dos elementos do array.
+
+- Um *array de argumentos* do tipo especificado.
+
+- Se não for enviado *nenhum argumento*, o comprimento da *lista de parâmetros* será zero.
