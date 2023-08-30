@@ -169,3 +169,89 @@ public class Calcular
 - Um *array de argumentos* do tipo especificado.
 
 - Se não for enviado *nenhum argumento*, o comprimento da *lista de parâmetros* será zero.
+
+## Arrays Multidimensionais
+
+Os *arrays* podem ter *mais de uma dimensão* e a linguagem C# suporta *arrays* com até 32 dimensões.
+
+Um *array multimensional* pode ser **declarado** adicionando **vírgula** entre **colchetes** na declaração do array:
+
+```csharp
+int[,] array2d;
+int[,,] array3d;
+int[,,,] array4d;
+```
+
+### Arrays com duas dimensões (bidimensionais)
+
+Um *array bidimensional* pode ser pensado como uma **tabela**, que tem um número *x* de linhas e um número *y* de colunas.
+
+```csharp
+// Inicialização
+int[,] a = new int[3,3];
+
+// Representação
+{
+    { 1, 2, 3 },
+    { 4, 5, 6 },
+    { 7, 8, 9 },
+}
+
+// Atribuição
+a[1, 2] = 1; // 6
+
+// Exibição
+Console.WriteLine(a[1, 2]);
+```
+
+Podemos inicializar o *array* de formas diferentes:
+
+```csharp
+// Exemplo 1
+int[,] a = new int[2, 2];
+
+// Exemplo 2
+int[,] a;
+a = new int[2, 2,];
+
+// Exemplo 3
+int[,] a = new int[2, 2] { { 3, 5 }, { 4, 6 } };
+
+// Exemplo 4
+int[,] a = { { 3, 5 }, { 4, 6 } };
+```
+
+### Usando laços em arrays multidimensionais
+
+#### Laço for
+
+Podemos usar um laço `for` para *ler e recuperar* os valores dos elementos de um array bidimensional definindo um laço `for` para *cada uma das dimensões do array*.
+
+Para obter as dimensões do array usamos o método `GetLength(n)` onde a primeira dimensão inicia com zero (**n=0**).
+
+```csharp
+int[,] a = new int[2, 2] { { 3, 5 }, { 4, 6 } };
+
+for (int x = 0; x < a.GetLength(0); x++) // primeira dimensão
+{
+    for (int y = 0; y < a.GetLength(1); y++) // segunda dimensão
+    {
+        Console.WriteLine(a[x, y]);
+    }
+}
+```
+
+#### Laço foreach
+
+Em **arrays de duas dimensões**, a instrução **foreach** processa elementos em ordem crescente de índice, começando com o índice 0 e terminando com *índice com valor* **Length-1**.
+
+Os elementos são percorridos de modo a que os índices da dimensão mais à direita são aumentados primeiro e, em seguida, *os da próxima dimensão à esquerda*, e assim por diante seguindo para a esquerda.
+
+```csharp
+int[,] a = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+foreach(var n in a)
+{
+    Console.WriteLine(n);
+}
+```
