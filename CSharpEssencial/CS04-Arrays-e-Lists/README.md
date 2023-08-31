@@ -255,3 +255,137 @@ foreach(var n in a)
     Console.WriteLine(n);
 }
 ```
+
+## ArrayList
+
+Um **ArrayList** é uma coleção *não genérica* cujo tamanho pode ser alterado *dinamicamente* e que armazena elementos de *vários tipos de dados*.
+
+Esta coleção é uma alternativa a **Array** e também pode ser *indexada* individualmente e permite *alocação dinâmica de memória, inclusão, pesquisa e classificação* de elementos na coleção.
+
+> O tamanho de uma **ArrayList** aumenta de forma *dinâmica* à medida que novos elementos são adicionados, e os elementos possuem um *índice* que começa com o valor 0 incrementando de 1 em 1, conforme adicionamos valores.
+
+A classe *ArrayList* está no *namespace* `System.Collections` possui 3 construtores usados para uma *ArrayList*:
+
+`ArrayList()` - É usado para criar uma instância da classe *ArrayList* que está vazia e sem *capacidade* inicial. (**Capacity** e **Count**)
+
+`ArrayList(Int32)` - É usado para criar uma instância da classe *ArrayList* que está vazia e tem a *capacidade* incial especificada.
+
+`ArrayList(ICollection)` - É usado para criar *uma lista de array inicializada* com os elementos da coleção especificada e tendo a mesma *capacidade* inicial que é copiada da coleção.
+
+```csharp
+using System.Collections;
+
+// Exemplo 1
+ArrayList lista;
+lista = new ArrayList(); // Count = 0, Capacity = 0
+
+// Exemplo 2
+ArrayList lista = new ArrayList(); // Count = 0, Capacity = 0
+
+// Exemplo 3
+var lista = new ArrayList(); // Count = 0, Capacity = 0
+
+// Exemplo 4 (C#10)
+ArrayList lista = new(); // Count = 0, Capacity = 0
+```
+
+Para definir a capacidade, você pode colocar um número do tipo `Int32` dentro de parêntesis (de qualquer forma, à medida que adicionamos elementos, a capacidade da *ArrayList* vai aumentando):
+
+```csharp
+ArrayList lista = new ArrayList(5);
+```
+
+Atribuindo valores no momento da inicialização:
+
+```csharp
+var lista = new ArrayList()
+{
+    "Paulo", 4.5, true, " ", null
+};
+```
+
+OBS: A capacidade padrão de uma *ArrayList* é 4. Se você atingir 5 elementos, a capacidade aumenta para 8. Se você atingir 9 elementos a capacidade aumenta para 12 e assim por diante, incrementando de 4 em 4.
+
+> A *ArrayList* aceita diferente tipos de dados, diferentemente de uma *array* que só aceita um tipo de dado.
+
+### Métodos para manipular elementos na lista
+
+```csharp
+lista.Add(Object value);
+// inlcui um único elemento ao final de uma ArrayList
+```
+
+```csharp
+lista.Insert(int index, Object value);
+// inclui um elemento em uma posição especificada
+```
+
+```csharp
+lista.Remove(Object value);
+// remove a primeira ocorrência de um objeto especificado
+```
+
+```csharp
+lista.RemoveAt(int index);
+// remove elemento no índice especificado
+```
+
+```csharp
+lista.RemoveRange(int index, int count);
+// remove um número definido de elementos a partir de um índice especificado
+```
+
+```csharp
+lista.Contains(Object item);
+// verifica se elemento contém o item especificado, retorna true ou false
+```
+
+```csharp
+lista.Sort();
+// ordena a ArrayList com elementos do mesmo tipo na ordem ascendente
+// Usa o algorítmo QuickSort para classificar os elementos da ArrayList
+```
+
+```csharp
+lista.Clear();
+// remove todos os elementos de uma ArrayList sem alterar sua capacidade
+```
+
+- Por exemplo:
+
+```csharp
+var lista = new ArrayList() { "Paul", 4.5, true, " ", null };
+
+lista.Add(4.6);
+lista.Insert(1, "Hard");
+```
+
+### Métodos para adicionar uma *coleção de elementos* a um *ArrayList*
+
+```csharp
+lista.AddRange(ICollection c);
+// adiciona a coleção de elementos ao final da ArrayList
+```
+
+```csharp
+lista.Insert(int index, ICollection c);
+// adiciona a coleção de elementos na ArrayList na posição do índice especificado
+```
+
+- Por exemplo:
+
+```csharp
+var lista = new ArrayList() { "Jean", 19, true, " ", null };
+int[] array = { 1, 2, 3, };
+
+lista.AddRange(array);
+lista.InsertRange(2, array);
+```
+
+> Quando trabalhamos com um ArrayList, estamos trabalhando em memória (*stack*)
+
+### ArrayList (considerações finais)
+
+A classe *ArrayList* foi projetada para conter coleções heterogenias de objetos. No entanto, nem sempre oferece o melhor desempenho.
+
+Para tratar uma coleção heterogenia de objetos, a recomendação é usar a coleção `List<Object>`, e para tratar com uma coleção homogenia de objetos, a recomendação é usar a coleção `List<T>`.
