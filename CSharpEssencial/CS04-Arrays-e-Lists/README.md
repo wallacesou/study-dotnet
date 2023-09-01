@@ -389,3 +389,36 @@ lista.InsertRange(2, array);
 A classe *ArrayList* foi projetada para conter coleções heterogenias de objetos. No entanto, nem sempre oferece o melhor desempenho.
 
 Para tratar uma coleção heterogenia de objetos, a recomendação é usar a coleção `List<Object>`, e para tratar com uma coleção homogenia de objetos, a recomendação é usar a coleção `List<T>`.
+
+## List
+
+A coleção `List<T>` é uma coleção de *objetos fortemente tipados* que podem ser acessados *usando um índice que inicia em zero*, e possui métodos para classificar, pesquisar, modificar e manipular listas.
+
+Esta coleção é a *versão genérica* da coleção **ArrayList**, sendo equivalente a ela, e esta presente no *namespace* **System.Collections.Generic**.
+
+A classe `List<T>` pode ser usado para criar *uma coleção de tipos diferentes*, onde `T` representa *o tipo de objetos* que pode ser *int, string, double, etc.*, e também pode ser um *tipo complexo* como uma classe definida pelo usuário.
+
+- Uma `List<T>` pode conter elementos do tipo especificado por `T`, fornece verificação de tipo em tempo de compilação e **não** executa **boxing-unboxing** porque é genérica.
+
+- Os elemenstos podem ser adicionados a uma `List<T>` usando os métodos `.Add()`, `.AddRange()`, `.Insert()` e `.InsertRange()` ou usando a sintaxe de *inicializador de coleção*.
+
+- Uma `List<T>` é uma *estrutura dinâmica* que pode ser *redimensionada*.
+
+- Uma `List<T>` *inicia vazia* e seus elementos são alocados sob demanda.
+
+- Uma `List<T>` como *Arrays* e *ArrayList* são *tipos de referência*: *uma variável refere-se ao objeto real, que deve ser instânciado na memória **Heap**.*
+
+```csharp
+// Exemplo 1
+List<int> lista;
+lista = new List<int>(); // Count = 0, Capacity = 0
+
+// Exemplo 2
+List<string> lista = new List<string>(); // Count = 0, Capacity = 0
+
+// Exemplo 3
+var lista = new List<string>(); // Count = 0, Capacity = 0
+
+// Exemplo 4 (C#10)
+List<int> lista = new(); // Count = 0, Capacity = 0
+```

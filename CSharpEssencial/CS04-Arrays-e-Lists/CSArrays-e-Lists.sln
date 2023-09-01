@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Params", "Params\Params.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArraysMultidimensionais", "ArraysMultidimensionais\ArraysMultidimensionais.csproj", "{8C1FFDFC-F72D-431D-9463-E81FECF7BFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayList", "ArrayList\ArrayList.csproj", "{E3EC824B-DC2B-4985-A39A-875842C0C9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayList", "ArrayList\ArrayList.csproj", "{E3EC824B-DC2B-4985-A39A-875842C0C9C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lists", "Lists\Lists.csproj", "{C384C751-EF43-41E4-8968-12B75E642886}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E3EC824B-DC2B-4985-A39A-875842C0C9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3EC824B-DC2B-4985-A39A-875842C0C9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3EC824B-DC2B-4985-A39A-875842C0C9C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C384C751-EF43-41E4-8968-12B75E642886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C384C751-EF43-41E4-8968-12B75E642886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C384C751-EF43-41E4-8968-12B75E642886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C384C751-EF43-41E4-8968-12B75E642886}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
