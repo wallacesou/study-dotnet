@@ -422,3 +422,14 @@ var lista = new List<string>(); // Count = 0, Capacity = 0
 // Exemplo 4 (C#10)
 List<int> lista = new(); // Count = 0, Capacity = 0
 ```
+
+> `List` apresenta os mesmos métodos e comportamentos da `ArrayList`
+
+| `ArrayLis`                                                                               | `List<T>`                                                 |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `System.Collections`                                                                     | `System.Collections.Generic`                              |
+| Coleção que pode armazenar itens de diversos tipos de dados. **Não** é fortemente tipada | Coleção de objetos *fortemente tipados*                   |
+| Realiza operação de *boxing* e *unboxing*                                                | Não realiza operação de *boxing* e *unboxing*             |
+| Apresenta menor desempenho                                                               | Apresenta melhor desempenho                               |
+| Não apresenta segurança de tipo                                                          | Apresenta segurança de tipo                               |
+| Seu uso deve ser evitado                                                                 | Recomendada para tratar objetos homogêneos e heterogêneos |

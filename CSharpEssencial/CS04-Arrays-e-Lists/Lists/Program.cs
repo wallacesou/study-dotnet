@@ -43,5 +43,33 @@ double[] array = { 8.5, 7, 10, 9 };
 lista.AddRange(array); // acrescenta array ao final da lista
 lista.InsertRange(2, array); // acrescenta array na posição especificada
 
+Console.WriteLine();
+
+// LIST - MÉTODOS FIND
+List<string> frutas = new()
+{
+    "Uva", "Banana", "Pera", "Maça", "Abacate", "Laranja", "Morango"
+};
+
+Console.WriteLine(frutas.Find(ProcuraR)); // Pera
+Console.WriteLine(frutas.Find(IniciaComA)); // Abacate
+
+// ou (expressão lambda)
+
+var find = frutas.Find(f => f.Contains("L")); // Laranja
+var findLast = frutas.FindLast(f => f.Contains("a")); // Morango
+var findIndex = frutas.FindIndex(f => f.Contains("e")); // 2
+var findLastIndex = frutas.FindLastIndex(f => f.Contains("e")); // 4
+var findAll = frutas.FindAll(f => f.Contains("e")); // Pera, Abacate
+
+Console.WriteLine(find);
+Console.WriteLine(findLast);
+Console.WriteLine(findIndex);
+Console.WriteLine(findLastIndex);
+foreach(var item in findAll)
+    Console.Write($"{item}, ");
 
 Console.ReadKey();
+
+static bool ProcuraR(string item) => item.Contains("r");
+static bool IniciaComA(string item) => item.StartsWith("A");
