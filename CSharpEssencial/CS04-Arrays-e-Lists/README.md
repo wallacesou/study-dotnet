@@ -433,3 +433,74 @@ List<int> lista = new(); // Count = 0, Capacity = 0
 | Apresenta menor desempenho                                                               | Apresenta melhor desempenho                               |
 | Não apresenta segurança de tipo                                                          | Apresenta segurança de tipo                               |
 | Seu uso deve ser evitado                                                                 | Recomendada para tratar objetos homogêneos e heterogêneos |
+
+### List: Métodos Find
+
+Os métodos Find espera que se forneça um ***predicado***:
+
+- `.Find()` retorna o *primeiro elemento* que corresponde ao predicado fornecido.
+
+- `.FindLast()` retorna o *último elemento* que corresponde ao predicado fornecido.
+
+- `.FindIndex()` retorna o *índice do primeiro elemento* que corresponde ao predicado fornecido. Ele retorna -1 se não houver correspondência exata.
+
+- `.FindLastIndex()` retorna o *índice do último elemento* que corresponde ao predicado fornecido. Ele retorna -1 se não houver correspondência exata.
+
+- `.FindAll()` retorna uma *lista com todos os elementos* que correspondem às condições definidas pelo predicado especificado.
+
+> Um ***predicado*** é uma *função/método de argumento único* que retorna um valor *booleano*.
+
+```csharp
+List<string> frutas = new()
+{
+    "Uva", "Banana", "Pera", "Maça", "Abacate", "Laranja", "Morango"
+};
+
+frutas.Find(ProcuraPrimeiroR); // Pera
+Console.WriteLine(frutas.Find(IniciaComA); // Abacate
+
+static bool ProcuraPrimeiroR(string item)
+{
+    return item.Contains("r");
+}
+static bool IniciaComA(string item)
+{
+    return item.StartsWith("A");
+}
+```
+
+#### Expressão Lambda
+
+Para evitar sempre ter que escrever métodos para fornecer um predicado para os métodos Find a linguagem C# simplificou com um recurso chamado *expressão lambda*.
+
+Uma expressão lambda é uma *função anônima*. Para criar uma expressão lambda, devemos especificar:
+
+- *os parâmetros de entrada* no lado esquerdo do **operador lambda** `=>`.
+
+- e definir a *expressão ou o bloco de instruções* do lado direito do *operador lambda*.
+
+Exemplo:
+
+```csharp
+List<string> frutas = new()
+{
+    "Uva", "Banana", "Pera", "Maça", "Abacate", "Laranja", "Morango"
+};
+
+string result = frutas.Find(f => f.Contains('n')); // Banana
+```
+
+Usando expressão lambda em todos os métodos Find:
+
+```csharp
+List<string> frutas = new()
+{
+    "Uva", "Banana", "Pera", "Maça", "Abacate", "Laranja", "Morango"
+};
+
+string? primeiraFrutaComA = frutas.Find(f => f.Contains('a')); // Uva
+string? ultimaFrutaComA = frutas.FindLast(f => f.Contains('a')); // Morango
+int indexDaPrimeiraFrutaComE = frutas.FindIndex(f => f.Contains('e')); // 2
+int indexDaUltimaFrutaComE = frutas.FindLastIndex(f => f.Contains('e')); // 4
+var listaDeFrutasComE = frutas.FindAll(f => f.Contains('e')); // Pera, Abacate
+```
