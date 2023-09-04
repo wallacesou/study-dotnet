@@ -504,3 +504,80 @@ int indexDaPrimeiraFrutaComE = frutas.FindIndex(f => f.Contains('e')); // 2
 int indexDaUltimaFrutaComE = frutas.FindLastIndex(f => f.Contains('e')); // 4
 var listaDeFrutasComE = frutas.FindAll(f => f.Contains('e')); // Pera, Abacate
 ```
+
+## Indexadores
+
+Os indexadores permitem que as instâncias de uma *classe* ou *struct* sejam indexadas como um array. Eles lembram as *propriedades*, mas seus acessores (get, set) recebem parâmetros.
+
+Um indexador é um membro da classe que permite acessar uma *variável de membro* da classe ou struct os recursos de um *array*.
+
+Quando você define um indexador para uma classe, essa classe se comporta como um *array virtual* e podemos acessar a *instância da classe* usando o operador de acesso ao array `[]` e também usar índices para *acessar e atribuir* valores como nos arrays.
+
+- Declaramos um indexador *como um método* passando um modificador de acesso.
+
+- Devemos definir um retorno de qualquer tipo, **exceto void**.
+
+- O nome do indexador será a palavra-chave `this`.
+
+- A lista de parâmetros de entrada deve ser envolta entre colchetes `[]`.
+
+- Ao final basta definir os acessores `get` e `set` para definir a lógica de acesso retornando e atribuindo um valor.
+
+```csharp
+public int this[int index] // declaração do index
+{
+    get { .. }
+    set { .. }
+}
+```
+
+Exemplo de uso:
+
+```csharp
+Nomes n = new();
+n[0] = "Robin";
+n[1] = "Jake";
+n[4] = "Miller";
+
+string n1 = n[0]; // Robin
+string n2 = n[1]; // Jake
+string n3 = n[2]; // ""
+string n4 = n[3]; // ""
+string n5 = n[4]; // Miller
+string n6 = n[5]; // ""
+
+
+Console.ReadKey();
+
+class Nomes
+{
+    string[] nomes = new string[10];
+
+    public string this[int i]
+    {
+        get // => i >= 0 && i < nomes.Length ? nomes[i] : string.Empty;
+        {
+            if (i >= 0 && i < nomes.Length)
+                return nomes[i];
+            return "";
+        }
+        set
+        {
+            if (i >= 0 && i < nomes.Length)
+                nomes[i] = value;
+        }
+    }
+}
+```
+
+Os acessores `get` e `set` possuem a lógica que assegura que o *array* não será acessado fora dos limites (**10 elementos**).
+
+- Um acessor `get` retorna um valor. Um acessor `set` define um valor.
+
+- A palavra-chave `this` é usada para definir os indexadores.
+
+- A palavra-chave `value` é usada para definir o valor que está sendo atribuído pelo indexador set.
+
+- Um indexador não pode ser estático.
+
+A utilidade de um indexador é fornecer uma sintaxe para acessar, através do índice, itens de um objeto que represente uma coleção.
