@@ -581,3 +581,53 @@ Os acessores `get` e `set` possuem a lógica que assegura que o *array* não ser
 - Um indexador não pode ser estático.
 
 A utilidade de um indexador é fornecer uma sintaxe para acessar, através do índice, itens de um objeto que represente uma coleção.
+
+## Classe Random
+
+### Gerando números aleatórios
+
+A classe `Random` do namespace System é usada para gerar números *pseudoaleatórios* com base no valor de uma semente (*seed*).
+
+Por padrão, o construtor sem parâmetros da classe `Random` usa o relógio do sistema para gerar o valor de semente.
+
+A geração de números aleatórios começa a partir de um valor de semente (*seed*) e se a mesma semente for usada repetidamente, a mesma série de números será gerada.
+
+### Principais métodos da Classe Random
+
+| Método             | Objetivo                                                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `Next()`           | Retorna um número inteiro aleatório positivo dentro do intervalo padrão -2.147.483.648 a 2.147.483.647                        |
+| `Next(int)`        | Retorna um número inteiro aleatório positivo que é menor que o valor máximo definido                                          |
+| `Next(int, int)`   | Retorna um número inteiro aleatório positivo dentro do intervalo mínimo e máximo definido (inclui o mínimo e exclui o máximo) |
+| `NextDouble()`     | Gera um número de ponto flutuante aleatório que é maior ou igual a 0.0 e menor que 1.0                                        |
+| `NextByte(byte[])` | Preenche os elementos de um *array* de bytes com números aleatórios                                                           |
+| `NextInt64()`      | Retorna um número inteiro positivo dentro do intervalo 0 e 9223372036854775807                                                |
+
+### Construtores da Classe Random
+
+- `Random()`: Inicializa uma nova instância da classe **Random** usando um valor de semente padrão.
+
+- `Random(int32)`: Inicializa uma nova instância da classe **Random** usando um valor da semente definido.
+
+### Exemplos práticos
+
+Gerando números aleatórios:
+
+```csharp
+Random random = new Random();
+
+Console.WriteLine(random.Next());
+Console.WriteLine(random.Next(20));
+Console.WriteLine(random.Next(0, 20));
+Console.WriteLine(random.NextDouble());
+```
+
+Preenchendo um array com números aleatórios:
+
+```csharp
+Random random = new Random();
+
+byte[] numbers = new byte[10];
+
+random.NextBytes(numbers);
+```
