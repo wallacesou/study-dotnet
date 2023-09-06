@@ -115,3 +115,132 @@ internal class Pessoa // classe base
     }
 }
 ```
+
+### Herança: Construtores
+
+A *classe base* e a *classe derivada* podem possuir seus próprios construtores.
+
+A *classe derivada* **não herda** o construtor da *classe base*, mas pode invocá-lo.
+
+Ao criar uma instância da *classe derivada* o construtor da *classe base* sem parâmetros será *invocado primeiro* e **depois** será invocado o construtor da *classe derivada*.
+
+A palavra-chave `base` é usada para acessar membros da *classe base* de dentro de uma classe derivada:
+
+- Ela é usada para *especificar qual construtor da classe base* deve ser chamado ao criar instância da *classe derivada*.
+
+### Herança: A classe Object
+
+Toda a classe é derivada da classe **Object**, e *a classe **Obejct** não deriva de nenhuma classe*. Ela é a classe **Base** de todas as classes.
+
+A classe **Object** dá suporte a todas as classes na hierarquia de classes do .NET e fornece serviços de baixo nível para as classes derivadas.
+
+Os métodos definidos na classe **Object** estão disponíveis em todos os objetos do sistema e as classes derivadas podem substituir alguns desses métodos:
+
+- `Equals`: suporta comparações entre objetos.
+
+- `GetHashCode`: gera um número *hash* para o objeto.
+
+- `ToString`: retorna a representação do objeto como uma *string*.
+
+- `GetType`: retorna informação sobre o tipo.
+
+> No C#, uma classe pode herdar apenas de uma classe. A herança tem que ser de classe para classe. A classe não pode herdar do tipo struct, por exemplo.
+
+### Herança: O modificador new
+
+Se um membro de uma *classe derivada* tiver o *mesmo nome* do membro de uma *classe base*, o compilador vai emitir o aviso:
+
+> *>>> 'member1' hides inherited member 'member2'. Use the new keyword if hiding was intended.*
+
+Este aviso indica que o membro da *classe derivada **oculta** o membro da classe base*.
+
+Quando o método *na classe derivada oculta* um membro da *classe base*, este membro *substitui (override)* o membro da *classe base*.
+
+Se você realmente deseja ocultar um membro da *classe base*, pode usar o modificador **new** para o membro na *subclasse*.
+
+```csharp
+class Pessoa
+{
+    public string? Nome { get; set; }
+    public string Apresentar() => $"Nome: {Nome}";
+}
+
+class Aluno : Pessoa
+{
+    public string? Curso { get; set; }
+
+    // 'new' indica que você realmente deseja substituir o método
+    public new string Apresentar() => $"{Nome}, do curso de {Curso}";
+}
+```
+
+### Herança: virtual e override
+
+Se você quiser que um membro da *subclasse* substitua um membro com o *mesmo nome* na *classe base*, deve fazer o seguinte:
+
+1. Usar o modificador `virtual` na declaração do membro da *classe base*:
+   
+   ```csharp
+   class Pessoa
+   {
+       public string? Nome { get; set; }
+       public virtual string Apresentar() => $"Nome: {Nome}";
+   }
+   ```
+
+2. Usar o modificador `override` na declaração do membro na *classe derivada*:
+   
+   ```csharp
+   class Aluno : Pessoa
+   {
+       public string? Curso { get; set; }
+       public override string Apresentar() => $"{Nome}, do curso de {Curso}";
+   }
+   ```
+
+### Herança: O modificador sealed
+
+Quando aplicado a uma classe, o modificador `sealed` impede que outras classes herdem dela.
+
+```csharp
+sealed class ClasseBase
+{
+    // código
+}
+
+class Subclasse : ClasseBase // error
+{
+    // código
+}
+```
+
+Podemos usar o modificador `sealed` em um *método ou propriedade* que substitui um método ou propriedade virtual em uma classe base.
+
+Com isso, você permite que classes sejam derivadas de sua classe e evita que outros desenvolvedores que estejam usando suas classes substituam métodos e propriedades virtuais específicos.
+
+```csharp
+class ClasseBase
+{
+    protected virtual void Metodo()
+    {
+        // código
+    }
+}
+
+class Classe1 : ClasseBase
+{
+    // impedindo que este método continue sendo herdado
+    sealed protected override void Metodo() // ok, it's work
+    {
+        // código
+    }
+}
+
+class Classe2 : Classe1
+{
+    protected override void Metodo() // error
+    {
+        // código
+    }
+}
+```
