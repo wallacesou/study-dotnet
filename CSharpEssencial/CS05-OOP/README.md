@@ -244,3 +244,83 @@ class Classe2 : Classe1
     }
 }
 ```
+
+### Herança: Downcasting e Upcasting
+
+As classes a seguir servirão de exemplo para as operações de **Upcasting** e **Downcasting**:
+
+```csharp
+class Shape // classe base
+{
+    protected int xPos, yPos;
+
+    public Shape() { }
+
+    public Shape(int xPos, int yPos)
+    {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
+
+    public virtual void Draw()
+    {
+        Console.WriteLine($"{this} on position: ({xPos}, {yPos})");
+    }
+}
+
+class Circle : Shape // classe derivada
+{
+    public Circle() { }
+
+    public Circle(int x, int y) : base (x, y) { }
+
+    public override void Draw()
+    {
+        base.Draw();
+    }
+
+    public void DrawCircle()
+    {
+        Console.WriteLine("Draw Circle");
+    }
+}
+```
+
+#### Upcasting
+
+A operação **upcasting** converte um objeto de um tipo especializado (*classe derivada*) para um tipo mais geral (*classe base*).
+
+Podemos entender o **upcasting** como a atribuição de um objeto de uma *classe derivada* para uma *referência* de uma *classe base*.
+
+Esta operação é **implícita**, e não é preciso ser feita de forma **explícita**, sendo sempre possível de ser realizada.
+
+```csharp
+// UPCASTING: conversão da classe derivada para a classe base
+
+// exemplo 1
+Shape circle = new Circle(207, 75); // é um objeto do tipo 'Shape'
+circle.Draw();
+
+// exemplo 2
+Circle circle = new(34, 89);
+Shape shape = circle; // a conversão aqui é implícita
+
+Console.WriteLine(shape == circle); // True
+```
+
+#### Downcasting
+
+A operação de **downcasting** converte um objeto de um tipo geral (*classe base*) para um tipo mais especializado (*classe derivada*).
+
+Podemos entender o **downcasting** como a atribuição de um objeto da classe base para um objeto da classe derivada.
+
+A operação de **downcasting** deve ser feita de *forma explícita* pois pode falhar e lançar uma exceção, ou seja, é uma operação que nem sempre é possível de ser realizada.
+
+```csharp
+// DOWNCASTING: conversão da classe base para a classe derivada
+
+Shape shape2 = new Circle(34, 89); // é um objeto do tipo 'Shape'
+Circle circle2 = (Circle)shape2; // a conversão aqui é explícita
+
+Console.WriteLine(shape2 == circle2); // True
+```
