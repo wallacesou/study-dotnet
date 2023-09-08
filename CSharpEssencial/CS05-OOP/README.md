@@ -319,8 +319,75 @@ A operação de **downcasting** deve ser feita de *forma explícita* pois pode f
 ```csharp
 // DOWNCASTING: conversão da classe base para a classe derivada
 
-Shape shape2 = new Circle(34, 89); // é um objeto do tipo 'Shape'
-Circle circle2 = (Circle)shape2; // a conversão aqui é explícita
+Shape shape = new Circle(34, 89); // é um objeto do tipo 'Shape'
+Circle circle = (Circle)shape; // a conversão aqui é explícita
 
-Console.WriteLine(shape2 == circle2); // True
+Console.WriteLine(shape == circle); // True
 ```
+
+## Operador Is e As
+
+### Operador As
+
+O operador `as` é usado para *realizar a conversão* entre tipos de referência ou *tipos anuláveis compatíveis*.
+
+Este operador retorna o objeto quando ele é compatível com o tipo de dado e retorna `null` se a *conversão não for possível* ao invés de gerar uma exceção.
+
+Ao realizar uma operação de **downcasting** ele avalia o resultado para `null` ao invés de *lançar uma exceção* caso a operação não seja possível.
+
+O operador `as` é um operador de *conversão de tipos (referência e anuláveis)*.
+
+```csharp
+// OPERADOR AS
+
+object a = "Mozart";
+
+string? b = a as string; // não lança exceção
+
+Console.WriteLine(b != null ? b : "null");
+
+Console.ReadKey();
+```
+
+O operador `as` pode ser usado para realizar a operação **downcasting**:
+
+```csharp
+Shape shape = new Circle(34, 89);
+Circle circle = shape as Circle; // usando o operador 'as'
+```
+
+- caso não seja possível converter, a variável `circle` apenas recebe null.
+
+### Operador Is
+
+O operador `is` é usado para verificar se o tipo de um objeto é compatível com o tipo especificado ou não.
+
+Retorna `true` se o objeto especificado for do mesmo tipo, caso contrário, retorna `false`. Retorna `false` também para objetos nulos.
+
+Podemos usar o operador `is` para verificar se uma conversão entre tipos será bem sucedida ou não.
+
+O operador `is` é um operador do *tipo booleano de comparação de tipos*.
+
+```csharp
+object a = "Mozart";
+if (a is string)
+    Console.WriteLine("A conversão é possível!");
+```
+
+O operador `is` pode ser usado para realizar a operação **downcasting**:
+
+```csharp
+Shape shape = new Circle(34, 89);
+if (shape is Circle) // é possível converter para o tipo 'Circle'?
+    Circle circle = shape as Circle; // então converta
+```
+
+### A diferença entre os operadores Is e As
+
+O operador `is` é usado para **verificar** se o tipo de um objeto é compatível com o tipo fornecido ou não, enquanto o operador `as` é usado para **realizar a conversão** entre *tipos de referência compatíveis ou tipos anuláveis*.
+
+- O operador `is` é do tipo *booleano*, enquanto o operador `as` não é do tipo booleano.
+
+- O operador `is` retorna `true` ou `false` ao fazer a comparação entre os tipos fornecidos, enquanto o operador `as` retorna `null` se a conversão não for possível.
+
+- O operador `is` é usado para *conversões de referência, boxing e unboxing*, enquanto o operador `as` é usado apenas para *conversões anuláveis, de referência e boxing*.
