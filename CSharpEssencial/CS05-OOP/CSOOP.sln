@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InheritanceOverride", "Inhe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpcastingDowncasting", "UpcastingDowncasting\UpcastingDowncasting.csproj", "{3779D2A4-65BB-490C-B3F9-4FDE77C10903}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsAsOperator", "IsAsOperator\IsAsOperator.csproj", "{DD257CC8-CEA0-4EAE-8631-B68AB95443F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsAsOperator", "IsAsOperator\IsAsOperator.csproj", "{DD257CC8-CEA0-4EAE-8631-B68AB95443F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractClass", "AbstractClass\AbstractClass.csproj", "{DBAE5D1F-A6C8-4163-BC5E-72C2FFD1D4CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DD257CC8-CEA0-4EAE-8631-B68AB95443F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD257CC8-CEA0-4EAE-8631-B68AB95443F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD257CC8-CEA0-4EAE-8631-B68AB95443F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBAE5D1F-A6C8-4163-BC5E-72C2FFD1D4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBAE5D1F-A6C8-4163-BC5E-72C2FFD1D4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBAE5D1F-A6C8-4163-BC5E-72C2FFD1D4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBAE5D1F-A6C8-4163-BC5E-72C2FFD1D4CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -391,3 +391,49 @@ O operador `is` é usado para **verificar** se o tipo de um objeto é compatíve
 - O operador `is` retorna `true` ou `false` ao fazer a comparação entre os tipos fornecidos, enquanto o operador `as` retorna `null` se a conversão não for possível.
 
 - O operador `is` é usado para *conversões de referência, boxing e unboxing*, enquanto o operador `as` é usado apenas para *conversões anuláveis, de referência e boxing*.
+
+## Modificador Abstract
+
+O modificador `abstract` indica que o recurso que está sendo modificado tem uma *implementação ausente ou incompleta*.
+
+Ele pode ser usado com *classes, métodos, propriedades, indexadores e eventos*.
+
+Usar o modificador `abstract` em uma declaração de **classe** indica que a classe se destina apenas a ser uma *classe base* de outras classe, não podendo ser instanciada.
+
+Membros marcados com o modificador `abstract` devem ser implementados por *classes não abstratas* que *derivam* de uma *classe abstrata*.
+
+Uma **classe abstrata** é definida usando o modificador `abstract` e pode conter métodos comuns e métodos abstratos que também são definidos pelo modificador abstract.
+
+- Um *método abstrato* é um método que não possui implementação na classe abstrata.
+
+- Um *método abstrato* possui somente a definição de sua assinatura.
+
+- Um *método abstrato* é implicitamente um *método virtual*.
+
+- A implementação do *método abstrato* é feita na *classe derivada*.
+
+- As *classes derivadas* de uma classe abstrata são obrigadas a implementar os seus *métodos abstratos*.
+
+- É um erro usar os modificadores `virtual` e `static` em um *método abstrato*.
+
+- As *propriedades abstratas* se comportam como os *métodos abstratos*.
+
+```csharp
+class abstract Forma // não pode ser instanciada
+{
+    public void Desenhar() // método padrão
+    {
+        // código
+    }
+
+    public abstract double CalcularArea(); // método abstrato
+}
+
+class Quadrado : Forma
+{
+    public override double CalcularArea() // a implementação é obrigatória
+    {
+        // código
+    }
+}
+```
